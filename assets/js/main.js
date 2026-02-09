@@ -1,6 +1,9 @@
 // Logo fade effect
 document.addEventListener('DOMContentLoaded', function() {
   const logoSplash = document.getElementById('logo-splash');
+  if (!logoSplash) {
+    return;
+  }
   
   // Wait 1.5 seconds, then start the fade
   setTimeout(function() {

@@ -8,10 +8,12 @@
   {% seo %}
 </head>
 <body>
+  {% if page.url == '/' %}
   <!-- Logo Splash Screen -->
   <div id="logo-splash">
     <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Ocotillo Interiors">
   </div>
+  {% endif %}
 
   <!-- Main Container -->
   <div class="main-container">
