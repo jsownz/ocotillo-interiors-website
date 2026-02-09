@@ -1,0 +1,8 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Placeholder logo - Replace with actual Ocotillo Interiors logo -->
+  <rect width="800" height="200" fill="#F2EBE3"/>
+  <text x="400" y="100" font-family="Georgia, serif" font-size="48" fill="#4C4233" text-anchor="middle" alignment-baseline="middle">
+    OCOTILLO INTERIORS
+  </text>
+  <line x1="250" y1="130" x2="550" y2="130" stroke="#4C4233" stroke-width="1"/>
+</svg>

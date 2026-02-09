@@ -1,0 +1,20 @@
+title: Ocotillo Interiors
+description: Interior Design
+url: ""
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .ruby-version
+  - .ruby-gemset

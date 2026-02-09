@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+  <!-- Logo Splash Screen -->
+  <div id="logo-splash">
+    <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Ocotillo Interiors">
+  </div>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Left Column - Navigation -->
+    <div class="left-column">
+      <div class="logo-small">
+        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Ocotillo Interiors">
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">About</a></li>
+          <li><a href="{{ '/portfolio' | relative_url }}">Portfolio</a></li>
+          <li><a href="{{ '/services' | relative_url }}">Services</a></li>
+          <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Right Column - Content -->
+    <div class="right-column">
+      <div class="content-area">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
