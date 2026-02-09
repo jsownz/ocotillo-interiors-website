@@ -1,15 +1,14 @@
 ---
 layout: default
 title: Contact
+image: "https://placehold.co/900x1200?text=Contact"
 ---
 
-# Get In Touch
+# Contact
 
-We'd love to hear about your project.
+We’d love to hear about your project. Please include a few details and we’ll respond within 2 business days.
 
-**Email:** info@ocotillointeriors.com  
+**Email:** hello@ocotillointeriors.com  
 **Phone:** (555) 123-4567
-
----
 
 *Studio visits by appointment only.*

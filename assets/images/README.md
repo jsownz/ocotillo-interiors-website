@@ -1,10 +1,18 @@
-# Logo Placeholder
+# Images
 
-Please save your Ocotillo Interiors logo image as:
-`assets/images/logo.png`
+Replace these placeholder images with actual project photos:
 
-The logo will be displayed:
-1. Full screen on the initial splash screen (background: #F2EBE3)
-2. As a smaller version in the left navigation column
+**Logo:**
+- `logo.png` - Main logo (used on splash screen and in navigation)
 
-Recommended size: At least 1000px wide for best quality
+**Page Images:**
+- `hero-interior.jpg` - Interior Design page
+- `real-estate.jpg` - Real Estate/Rental Design page
+- `exterior.jpg` - Exterior/Landscaping page
+- `work-with-us.jpg` - Work with us page
+- `contact.jpg` - Contact page
+
+**Recommended specs:**
+- Dimensions: 1600x1200px or larger
+- Format: JPG or PNG
+- Images should be high quality and represent each service area
