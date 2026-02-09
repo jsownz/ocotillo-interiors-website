@@ -38,7 +38,13 @@
   {% endif %}
 
   <!-- Main Container -->
-  <div class="main-container{% if page.image_side == 'left' %} image-left{% endif %}">
+  {% assign page_class = page.url | default: '/' %}
+  {% if page_class == '/' or page_class == '/index.html' %}
+    {% assign page_class = 'home' %}
+  {% else %}
+    {% assign page_class = page_class | remove: '/' | remove: '.html' %}
+  {% endif %}
+  <div class="main-container page-{{ page_class }}{% if page.image_side == 'left' %} image-left{% endif %}">
     <!-- Left Column - Navigation / Content -->
     <div class="left-column{% unless is_home %} left-column--content{% endunless %}">
       {% if is_home %}
