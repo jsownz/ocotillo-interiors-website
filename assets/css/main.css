@@ -18,6 +18,7 @@ html, body {
   font-family: 'Playfair Display', Georgia, serif;
   color: #333;
   overflow-x: hidden;
+  background: #4C4233;
 }
 
 body {
@@ -194,7 +195,7 @@ body.home #logo-splash img {
   height: 100%;
   overflow-y: auto;
   background-color: #4C4233;
-  padding: 0 2em 1.5em 0;
+  /* padding: 0 2em 1.5em 0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,8 +325,8 @@ body.home #logo-splash img {
 /* Photo Pile (Homepage) */
 .photo-pile {
   position: relative;
-  width: min(70%, 520px);
-  height: min(78vh, 680px);
+  width: min(62%, 520px);
+  height: min(70vh, 680px);
   display: flex;
   align-items: center;
   justify-content: center;
