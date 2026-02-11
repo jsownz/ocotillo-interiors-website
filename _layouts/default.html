@@ -6,7 +6,8 @@
   <title>{{ page.title | default: site.title }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Spectral+SC:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% seo %}
   {% assign is_home = false %}
@@ -17,7 +18,7 @@
 <body{% if is_home %} class="home"{% endif %}>
   <header class="top-nav">
     <a class="top-nav__logo" href="{{ '/' | relative_url }}" aria-label="Ocotillo Interiors home">
-      <img src="{{ '/assets/images/logo-placeholder-light.svg' | relative_url }}" alt="Ocotillo Interiors">
+      <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782174/logo-placeholder-light_x0yzsa.svg" alt="Ocotillo Interiors">
     </a>
     <nav class="top-nav__links" aria-label="Primary">
       <a href="{{ '/design-studio' | relative_url }}">Design Studio</a>
@@ -33,7 +34,8 @@
   {% if is_home %}
   <!-- Logo Splash Screen -->
   <div id="logo-splash">
-    <img src="{{ '/assets/images/logo-placeholder.svg' | relative_url }}" alt="Ocotillo Interiors">
+    <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782280/ocotillo-logo-secondary-square_ec4ql5.png" alt="Ocotillo Interiors">
+    <h1>Ocotillo Interiors</h1>
   </div>
   {% endif %}
 
@@ -51,10 +53,6 @@
       <nav class="side-nav" aria-label="Homepage">
         <ul>
           <li><a href="{{ '/design-studio' | relative_url }}">Design Studio</a></li>
-          <li><a href="{{ '/interior-design' | relative_url }}">Interior Design</a></li>
-          <li><a href="{{ '/space-planning-rendering' | relative_url }}">Space Planning/Rendering</a></li>
-          <li><a href="{{ '/exterior-landscaping' | relative_url }}">Exterior Landscaping</a></li>
-          <li><a href="{{ '/rental-decorating' | relative_url }}">Rental Decorating</a></li>
           <li><a href="{{ '/about' | relative_url }}">About</a></li>
           <li><a href="{{ '/work-with-us' | relative_url }}">Work With Us</a></li>
         </ul>

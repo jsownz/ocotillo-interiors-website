@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Spectral+SC:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% seo %}
+</head>
+<body class="design-studio-c">
+  <header class="top-nav">
+    <a class="top-nav__logo" href="{{ '/' | relative_url }}" aria-label="Ocotillo Interiors home">
+      <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782174/logo-placeholder-light_x0yzsa.svg" alt="Ocotillo Interiors">
+    </a>
+    <nav class="top-nav__links" aria-label="Primary">
+      <a href="{{ '/design-studio' | relative_url }}">Design Studio</a>
+      <a href="{{ '/interior-design' | relative_url }}">Interior Design</a>
+      <a href="{{ '/space-planning-rendering' | relative_url }}">Space Planning/Rendering</a>
+      <a href="{{ '/exterior-landscaping' | relative_url }}">Exterior Landscaping</a>
+      <a href="{{ '/rental-decorating' | relative_url }}">Rental Decorating</a>
+      <a href="{{ '/about' | relative_url }}">About</a>
+      <a href="{{ '/work-with-us' | relative_url }}">Work With Us</a>
+    </nav>
+  </header>
+
+  {{ content }}
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

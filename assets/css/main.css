@@ -12,13 +12,40 @@
   --nav-height: 72px;
 }
 
+.spectral-sc-extralight {
+  font-family: "Spectral SC", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.spectral-sc-light {
+  font-family: "Spectral SC", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.spectral-sc-regular {
+  font-family: "Spectral SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 html, body {
   height: 100%;
   width: 100%;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: "Montserrat", sans-serif;
   color: #333;
   overflow-x: hidden;
   background: #4C4233;
+  background-image: linear-gradient(to bottom right, rgba(76, 66, 51, 1), rgba(76, 66, 51, 1) 30%, rgba(76, 66, 51, 0.85) 60%, rgba(76, 66, 51, 0.9) 90%, rgba(76, 66, 51, 1)), url('https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782395/wall4_xqvgsw.webp');
+  background-repeat: repeat;
 }
 
 body {
@@ -33,12 +60,33 @@ body.home #logo-splash {
   width: 100%;
   height: 100%;
   background-color: #F2EBE3;
+  background-image: linear-gradient(to bottom right, rgba(242, 235, 227, 0.2), rgba(242, 235, 227, 0.8)), url('https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782395/ep_naturalwhite_iokjph.webp');
+  background-repeat: repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction:column;
   z-index: 9999;
   opacity: 1;
   transition: opacity 1s ease-in-out;
+}
+
+body.home #logo-splash::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+body.home #logo-splash.start img{
+  opacity: .6;
+}
+body.home #logo-splash.start h1 {
+  opacity: .7;
 }
 
 body.home #logo-splash.fade-out {
@@ -48,8 +96,17 @@ body.home #logo-splash.fade-out {
 
 body.home #logo-splash img {
   max-width: 500px;
-  width: 80%;
+  width: 20vw;
   height: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+#logo-splash h1 {
+  color: #826A56;
+  font-family: "Spectral SC", serif;
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* Main Container */
@@ -57,7 +114,6 @@ body.home #logo-splash img {
   display: flex;
   height: calc(100vh - var(--nav-height));
   width: 100%;
-  background-color: #4C4233;
 }
 
 .main-container.image-left {
@@ -71,7 +127,7 @@ body.home #logo-splash img {
   left: 0;
   right: 0;
   height: var(--nav-height);
-  background-color: #4C4233;
+  /* background-color: #4C4233; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -96,7 +152,7 @@ body.home #logo-splash img {
 .top-nav__links a {
   color: #F2EBE3;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 400;
   transition: opacity 0.3s ease;
   position: relative;
   padding-bottom: 4px;
@@ -126,7 +182,6 @@ body.home #logo-splash img {
   flex-direction: column;
   justify-content: center;
   padding: 80px 100px;
-  background-color: #4C4233;
   color: #F2EBE3;
   position: relative;
 }
@@ -142,7 +197,8 @@ body.home #logo-splash img {
 }
 
 .page-content h1 {
-  font-size: 58px;
+  font-family: "Spectral SC", serif;
+  font-size: 52px;
   font-weight: 300;
   margin-bottom: 1.5rem;
   letter-spacing: 0.02em;
@@ -165,6 +221,7 @@ body.home #logo-splash img {
 }
 
 .side-nav {
+  font-family: "Spectral SC", serif;
   font-size: 2.5rem;
   line-height: 1.6;
 }
@@ -194,7 +251,6 @@ body.home #logo-splash img {
   width: 50%;
   height: 100%;
   overflow-y: auto;
-  background-color: #4C4233;
   /* padding: 0 2em 1.5em 0; */
   display: flex;
   align-items: center;
@@ -246,11 +302,31 @@ body.home #logo-splash img {
   width: 100%;
   max-width: 600px;
   padding: 3rem 2.5rem;
-  background-color: #F2EBE3;
+  background-color: rgba(249, 245, 240, 0.95);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.page-work-with-us .right-column .content-area {
-  background-color: #F2EBE3;
+.page-about .right-column {
+  width: 35%;
+}
+.page-about .left-column {
+  width: 65%;
+  padding: 2em;
+  text-align: center;
+}
+.page-about .left-column .page-content {
+  max-width: 100%;
+}
+.page-about .about-c {
+  display: flex;
+}
+.page-about .about-c div {
+  width: 50%;
+}
+.page-about .page-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
 }
 
 .form-row {
@@ -279,7 +355,7 @@ body.home #logo-splash img {
   border: none;
   border-bottom: 1px solid #D0C5B8;
   padding: 0.75rem 1rem;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: "Spectral SC", serif;
   font-size: 0.95rem;
   color: #4C4233;
   transition: border-color 0.3s ease;
@@ -309,7 +385,7 @@ body.home #logo-splash img {
   background-color: #5A8B7E;
   color: #F2EBE3;
   border: none;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: "Spectral SC", serif;
   font-size: 1.05rem;
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -381,6 +457,68 @@ body.home #logo-splash img {
 
 .pile-next:hover {
   transform: translate(50%, -50%) scale(1.05);
+}
+
+.design-studio-c {
+  background-color: #F9F5F0;
+}
+
+.design-studio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.design-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background-color: #FFF8F2;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.design-section img {
+  width: 100%;
+  height: auto;
+}
+
+.design-section-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.design-section-content h2 {
+  font-family: "Spectral SC", serif;
+  font-size: 1.5rem;
+  color: #4C4233;
+  margin-bottom: 1rem;
+}
+
+.design-section-content p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.design-section-content .btn {
+  font-family: "Spectral SC", serif;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #5A8B7E;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.design-section-content .btn:hover {
+  background-color: #6B5A4E;
 }
 
 /* Responsive Design */

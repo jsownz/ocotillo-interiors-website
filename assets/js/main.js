@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       logoSplash.style.display = 'none';
     }, 1000); // Match the CSS transition duration
-  }, 1500);
+  }, 2000);
+
+  logoSplash.classList.add('start');
 });
 
 // Photo pile functionality
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  const nextButton = pile.querySelector('.pile-next');
+  // const nextButton = pile.querySelector('.pile-next');
   const cards = Array.from(pile.querySelectorAll('.pile-card'));
   const offsets = [
     { x: 0, y: 0, r: -1 },
@@ -86,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   layoutPile();
 
-  if (nextButton) {
-    nextButton.addEventListener('click', advancePile);
+  if (cards.length) {
+    // Run advancePile every 5 seconds
+    setInterval(advancePile, 5000);
   }
 });
