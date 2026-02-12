@@ -1,115 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet"> -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;900&family=Spectral+SC:wght@200;300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  {% seo %}
-  {% assign is_home = false %}
-  {% if page.url == '/' or page.url == '/index.html' %}
-    {% assign is_home = true %}
-  {% endif %}
-</head>
-<body{% if is_home %} class="home"{% endif %}>
-  <header class="top-nav">
-    <a class="top-nav__logo" href="{{ '/' | relative_url }}" aria-label="Ocotillo Interiors home">
-      <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782174/logo-placeholder-light_x0yzsa.svg" alt="Ocotillo Interiors">
-    </a>
-    <nav class="top-nav__links" aria-label="Primary">
-      <a href="{{ '/design-studio' | relative_url }}">Design Studio</a>
-      <a href="{{ '/interior-design' | relative_url }}">Interior Design</a>
-      <a href="{{ '/space-planning-rendering' | relative_url }}">Space Planning/Rendering</a>
-      <a href="{{ '/exterior-landscaping' | relative_url }}">Exterior Landscaping</a>
-      <a href="{{ '/rental-decorating' | relative_url }}">Rental Decorating</a>
-      <a href="{{ '/about' | relative_url }}">About</a>
-      <a href="{{ '/work-with-us' | relative_url }}">Work With Us</a>
-    </nav>
-  </header>
+{% include head.html %}
 
-  {% if is_home %}
   <!-- Logo Splash Screen -->
   <div id="logo-splash">
     <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto/v1770782280/ocotillo-logo-secondary-square_ec4ql5.png" alt="Ocotillo Interiors">
     <h1>Ocotillo Interiors</h1>
   </div>
-  {% endif %}
 
   <!-- Main Container -->
-  {% assign page_class = page.url | default: '/' %}
-  {% if page_class == '/' or page_class == '/index.html' %}
-    {% assign page_class = 'home' %}
-  {% else %}
-    {% assign page_class = page_class | remove: '/' | remove: '.html' %}
-  {% endif %}
-  <div class="main-container page-{{ page_class }}{% if page.image_side == 'left' %} image-left{% endif %}">
-    <!-- Left Column - Navigation / Content -->
-    <div class="left-column{% unless is_home %} left-column--content{% endunless %}">
-      {% if is_home %}
-      <nav class="side-nav" aria-label="Homepage">
-        <ul>
-          <li><a href="{{ '/design-studio' | relative_url }}">Design Studio</a></li>
-          <li><a href="{{ '/about' | relative_url }}">About</a></li>
-          <li><a href="{{ '/work-with-us' | relative_url }}">Work With Us</a></li>
-        </ul>
-      </nav>
-      {% else %}
-      <div class="page-content">
-        {{ content }}
-      </div>
-      {% endif %}
-    </div>
+  <div class="main-container">
+    
+    {{ content }}
 
-    <!-- Right Column - Image / Content -->
-    <div class="right-column">
-      {% if is_home %}
-      <div class="content-area">
-        {{ content }}
-      </div>
-      {% elsif page.has_form %}
-      <div class="content-area">
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone *</label>
-              <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message">How can we help?</label>
-            <textarea id="message" name="message" rows="6" placeholder="Add answer here"></textarea>
-          </div>
-          <button type="submit" class="form-submit">Submit</button>
-        </form>
-      </div>
-      {% else %}
-      <div class="content-area{% if page.image %} image-panel{% endif %}"{% if page.image %} style="background-image: url('{{ page.image }}');"{% endif %}></div>
-      {% endif %}
     </div>
   </div>
-
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-</body>
-</html>
+{% include footer.html %}

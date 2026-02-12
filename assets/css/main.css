@@ -307,26 +307,32 @@ body.home #logo-splash img {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.page-about .right-column {
-  width: 35%;
-}
-.page-about .left-column {
-  width: 65%;
-  padding: 2em;
+.about-c {
   text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-.page-about .left-column .page-content {
-  max-width: 100%;
+.about-c h2 {
+  font-family: "Spectral SC", serif;
+  font-size: 2.2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  width: 80%;
+  margin: 1rem auto 1.5rem auto;
 }
-.page-about .about-c {
+.about-c .flex {
   display: flex;
+  color: white;
 }
-.page-about .about-c div {
-  width: 50%;
+.about-c .flex > div {
+  flex: 1;
+  padding: 0 1.5rem;
 }
-.page-about .page-content p {
+.about-c p {
   font-size: 1.2rem;
   line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
 
 .form-row {
@@ -585,4 +591,43 @@ body.home #logo-splash img {
     gap: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+/* Carousel Styles */
+#carousel {
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2rem;
+  width: 300vw;
+  align-items: center;
+  position: relative;
+  left: -6vw; /* Center the grid: shift left by 1 viewport width */
+}
+
+.carousel-grid > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#carousel .carousel-grid > div.active img {
+  transform: scale3d(1.1,1.1,1.1);
+}
+
+#carousel img {
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }

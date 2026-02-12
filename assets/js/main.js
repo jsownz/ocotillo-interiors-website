@@ -36,60 +36,60 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Photo pile functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const pile = document.querySelector('.photo-pile');
-  if (!pile) {
-    return;
-  }
+// document.addEventListener('DOMContentLoaded', function() {
+//   const pile = document.querySelector('.photo-pile');
+//   if (!pile) {
+//     return;
+//   }
 
-  // const nextButton = pile.querySelector('.pile-next');
-  const cards = Array.from(pile.querySelectorAll('.pile-card'));
-  const offsets = [
-    { x: 0, y: 0, r: -1 },
-    { x: -10, y: 6, r: 1.2 },
-    { x: 8, y: 14, r: -1.6 },
-    { x: -14, y: 22, r: 0.8 },
-    { x: 12, y: 30, r: -0.6 },
-    { x: -6, y: 38, r: 1.1 },
-    { x: 10, y: 46, r: -0.9 },
-    { x: -8, y: 54, r: 0.7 },
-    { x: 6, y: 62, r: -0.5 },
-    { x: -4, y: 70, r: 0.4 }
-  ];
+//   // const nextButton = pile.querySelector('.pile-next');
+//   const cards = Array.from(pile.querySelectorAll('.pile-card'));
+//   const offsets = [
+//     { x: 0, y: 0, r: -1 },
+//     { x: -10, y: 6, r: 1.2 },
+//     { x: 8, y: 14, r: -1.6 },
+//     { x: -14, y: 22, r: 0.8 },
+//     { x: 12, y: 30, r: -0.6 },
+//     { x: -6, y: 38, r: 1.1 },
+//     { x: 10, y: 46, r: -0.9 },
+//     { x: -8, y: 54, r: 0.7 },
+//     { x: 6, y: 62, r: -0.5 },
+//     { x: -4, y: 70, r: 0.4 }
+//   ];
 
-  let isAnimating = false;
+//   let isAnimating = false;
 
-  function layoutPile() {
-    cards.forEach((card, index) => {
-      const offset = offsets[index] || offsets[offsets.length - 1];
-      card.style.setProperty('--pile-x', `${offset.x}px`);
-      card.style.setProperty('--pile-y', `${offset.y}px`);
-      card.style.setProperty('--pile-rot', `${offset.r}deg`);
-      card.style.zIndex = `${cards.length - index}`;
-    });
-  }
+//   function layoutPile() {
+//     cards.forEach((card, index) => {
+//       const offset = offsets[index] || offsets[offsets.length - 1];
+//       card.style.setProperty('--pile-x', `${offset.x}px`);
+//       card.style.setProperty('--pile-y', `${offset.y}px`);
+//       card.style.setProperty('--pile-rot', `${offset.r}deg`);
+//       card.style.zIndex = `${cards.length - index}`;
+//     });
+//   }
 
-  function advancePile() {
-    if (isAnimating) {
-      return;
-    }
-    isAnimating = true;
+//   function advancePile() {
+//     if (isAnimating) {
+//       return;
+//     }
+//     isAnimating = true;
 
-    const topCard = cards.shift();
-    topCard.classList.add('is-moving');
+//     const topCard = cards.shift();
+//     topCard.classList.add('is-moving');
 
-    setTimeout(() => {
-      topCard.classList.remove('is-moving');
-      cards.push(topCard);
-      layoutPile();
-      isAnimating = false;
-    }, 600);
-  }
+//     setTimeout(() => {
+//       topCard.classList.remove('is-moving');
+//       cards.push(topCard);
+//       layoutPile();
+//       isAnimating = false;
+//     }, 600);
+//   }
 
-  layoutPile();
+//   layoutPile();
 
-  if (cards.length) {
-    // Run advancePile every 5 seconds
-    setInterval(advancePile, 5000);
-  }
-});
+//   if (cards.length) {
+//     // Run advancePile every 5 seconds
+//     setInterval(advancePile, 5000);
+//   }
+// });

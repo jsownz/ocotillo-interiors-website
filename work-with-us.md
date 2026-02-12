@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: work_with_us
 title: Work With Us
 has_form: true
 ---
