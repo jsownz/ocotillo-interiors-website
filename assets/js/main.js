@@ -39,31 +39,150 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselGrid = carousel.querySelector('.carousel-grid');
 
   if (carousel) {
-    let gridWidth = carouselGrid.offsetWidth,
-        viewportWidth = window.innerWidth;
-    carouselGrid.style.left = `-${(gridWidth/2) - (viewportWidth/2) - 32}px`;
-    setTimeout(function(){
-
-      // Set up interval to rotate active class every 5 seconds
-      setInterval(() => {
-        const currentActive = carouselGrid.querySelector('.active');
-        const nextActive = currentActive.nextElementSibling || carouselGrid.firstElementChild;
-        // get first element width
-        const firstElement = carouselGrid.firstElementChild;
-        const newElement = firstElement.cloneNode(true);
-        const firstElementWidth = firstElement.offsetWidth;
-        firstElement.style.width = `${firstElementWidth}px`;
-        setTimeout(function(){
-          firstElement.style.width = `0px`;
-          setTimeout(function(){
-            firstElement.remove();
-            carouselGrid.appendChild(newElement);
-          },300);
-          nextActive.classList.add('active');
-          currentActive.classList.remove('active');
-        },300);
+    const items = Array.from(carouselGrid.children);
+    const gap = 32; // 2rem gap
+    const itemWidths = [];
+    let viewportWidth = window.innerWidth;
+    let currentIndex = 0;
+    let previousOffsets = new Map();
+    
+    // Measure all item widths after images load
+    let loadedCount = 0;
+    items.forEach((item, index) => {
+      const img = item.querySelector('img');
+      
+      const measureWidth = () => {
+        // Wait a frame to ensure layout is complete
+        requestAnimationFrame(() => {
+          itemWidths[index] = img.offsetWidth;
+          console.log(`Item ${index} width: ${itemWidths[index]}px`);
+          loadedCount++;
+          if (loadedCount === items.length) {
+            console.log('All widths measured:', itemWidths);
+            initCarousel();
+          }
+        });
+      };
+      
+      if (img.complete) {
+        measureWidth();
+      } else {
+        img.addEventListener('load', measureWidth);
+      }
+    });
+    
+    function initCarousel() {
+      // Find initial active index
+      currentIndex = items.findIndex(item => item.classList.contains('active'));
+      if (currentIndex === -1) currentIndex = 0;
+      
+      // Position all items
+      updatePositions(false);
+      
+      // Start auto-rotation after delay
+      setTimeout(() => {
+        setInterval(() => {
+          advance();
+        }, 5000);
       }, 5000);
-    }, 5000);
+    }
+    
+    function updatePositions(animate = true) {
+      const center = viewportWidth / 2;
+      
+      items.forEach((item, index) => {
+        // Calculate position relative to current index
+        let offset = index - currentIndex;
+        
+        // Handle wrapping (infinite loop effect)
+        if (offset > items.length / 2) {
+          offset -= items.length;
+        } else if (offset < -items.length / 2) {
+          offset += items.length;
+        }
+        
+        // Check if this item is wrapping around
+        const prevOffset = previousOffsets.get(index);
+        const isWrapping = prevOffset !== undefined && Math.abs(offset - prevOffset) > items.length / 2;
+        
+        // Calculate x position (left edge of item)
+        // Start from the left edge of the active/centered item
+        let x = center - (itemWidths[currentIndex] / 2);
+        
+        // Add widths of items between active and this one
+        if (offset > 0) {
+          // Items to the right - walk from active to target
+          for (let i = 0; i < offset; i++) {
+            const idx = (currentIndex + i + items.length) % items.length;
+            x += itemWidths[idx] + gap;
+          }
+        } else if (offset < 0) {
+          // Items to the left - walk backwards from active to target
+          for (let i = -1; i >= offset; i--) {
+            const idx = (currentIndex + i + items.length) % items.length;
+            x -= itemWidths[idx] + gap;
+          }
+        }
+        
+        // Store current offset for next comparison
+        previousOffsets.set(index, offset);
+        
+        // Handle wrapping items
+        if (isWrapping && animate) {
+          // Fade out, reposition instantly, then fade in
+          item.style.transition = 'opacity 0.15s ease';
+          item.style.opacity = '0';
+          
+          setTimeout(() => {
+            item.style.transition = 'none';
+            item.style.transform = `translateX(${x}px)`;
+            
+            requestAnimationFrame(() => {
+              item.style.transition = 'opacity 0.3s ease';
+              item.style.opacity = offset === 0 ? '1' : '0.4';
+            });
+          }, 150);
+        } else {
+          // Normal movement
+          if (animate) {
+            item.style.transition = 'transform 0.6s ease-in-out, opacity 0.6s ease';
+          } else {
+            item.style.transition = 'none';
+          }
+          
+          item.style.transform = `translateX(${x}px)`;
+          item.style.opacity = offset === 0 ? '1' : '0.4';
+        }
+        
+        // Update active class
+        if (offset === 0) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+    
+    function advance() {
+      currentIndex = (currentIndex + 1) % items.length;
+      updatePositions(true);
+    }
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        viewportWidth = window.innerWidth;
+        // Re-measure widths
+        items.forEach((item, index) => {
+          const img = item.querySelector('img');
+          itemWidths[index] = img.offsetWidth;
+        });
+        previousOffsets.clear();
+        updatePositions(false);
+      }, 100);
+    });
   }
 
 });
