@@ -610,16 +610,24 @@ body.home #logo-splash img {
   align-items: center;
   position: absolute;
   /* left: calc(-2441px - 128px); */
+  transition: left 0.3s ease;
 }
 
 .carousel-grid > div {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: width 0.3s ease;
+}
+
+.carousel-grid > div:not(.active) {
+  opacity: 0.4;
 }
 
 #carousel .carousel-grid > div.active img {
   transform: scale3d(1.1,1.1,1.1);
+  position: relative;
+  z-index: 10;
 }
 
 #carousel img {

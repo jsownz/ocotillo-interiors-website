@@ -39,18 +39,29 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselGrid = carousel.querySelector('.carousel-grid');
 
   if (carousel) {
+    let gridWidth = carouselGrid.offsetWidth,
+        viewportWidth = window.innerWidth;
+    carouselGrid.style.left = `-${(gridWidth/2) - (viewportWidth/2) - 32}px`;
     setTimeout(function(){
-      let gridWidth = carouselGrid.offsetWidth,
-          viewportWidth = window.innerWidth;
-      carouselGrid.style.left = `-${(gridWidth/2) - (viewportWidth/2) - 32}px`;
 
       // Set up interval to rotate active class every 5 seconds
       setInterval(() => {
         const currentActive = carouselGrid.querySelector('.active');
         const nextActive = currentActive.nextElementSibling || carouselGrid.firstElementChild;
-        
-        nextActive.classList.add('active');
-        currentActive.classList.remove('active');
+        // get first element width
+        const firstElement = carouselGrid.firstElementChild;
+        const newElement = firstElement.cloneNode(true);
+        const firstElementWidth = firstElement.offsetWidth;
+        firstElement.style.width = `${firstElementWidth}px`;
+        setTimeout(function(){
+          firstElement.style.width = `0px`;
+          setTimeout(function(){
+            firstElement.remove();
+            carouselGrid.appendChild(newElement);
+          },300);
+          nextActive.classList.add('active');
+          currentActive.classList.remove('active');
+        },300);
       }, 5000);
     }, 5000);
   }
