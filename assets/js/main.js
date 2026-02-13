@@ -1,10 +1,45 @@
 // Set active navigation state
 document.addEventListener('DOMContentLoaded', function() {
+  // Hamburger menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.top-nav__links');
+  
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', 
+        hamburger.classList.contains('active'));
+    });
+
+    // Close menu when clicking on a nav link
+    const navItems = document.querySelectorAll('.top-nav__links a');
+    navItems.forEach(link => {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navLinks.contains(event.target);
+      const isClickOnHamburger = hamburger.contains(event.target);
+      
+      if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   // Highlight active nav link
   const currentPath = window.location.pathname;
-  const navLinks = document.querySelectorAll('.top-nav__links a');
+  const allNavLinks = document.querySelectorAll('.top-nav__links a');
   
-  navLinks.forEach(link => {
+  allNavLinks.forEach(link => {
     const linkPath = new URL(link.href).pathname;
     // Normalize paths by removing trailing slashes for comparison
     const normalizedCurrent = currentPath.replace(/\/$/, '') || '/';
@@ -55,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Wait a frame to ensure layout is complete
         requestAnimationFrame(() => {
           itemWidths[index] = img.offsetWidth;
-          console.log(`Item ${index} width: ${itemWidths[index]}px`);
           loadedCount++;
           if (loadedCount === items.length) {
             console.log('All widths measured:', itemWidths);
@@ -83,8 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         setInterval(() => {
           advance();
-        }, 5000);
-      }, 5000);
+        }, 3500);
+      }, 3000);
     }
     
     function updatePositions(animate = true) {

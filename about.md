@@ -5,7 +5,7 @@ image: ""
 ---
 
 <div class="about-c">
-  <h2>*The best interiors don't feel unfamiliar. They simply show you what your space was always capable of becoming.*</h2>
+  <h2>The best interiors don't feel unfamiliar. They simply show you what your space was always capable of becoming.</h2>
   <div class="flex">
     <div>
       <p>Ocotillo Interiors is a full-service interior design studio rooted in storytelling, intuition, and deeply personal spaces. With over a decade of experience, my journey began in Orange County, where I studied, worked, and learned under remarkable designers who taught me not only how to refine my craft, but how to imagine what could be. That path led me into interior project management, overseeing residential and commercial projects throughout Los Angeles and Seattle, before relocating full-time to New Orleans to serve as Director of Design, guiding teams and projects across Louisiana, California, Washington, Texas, and beyond.</p>

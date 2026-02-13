@@ -35,10 +35,10 @@ title: Home
     <div>
       <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto,c_scale,h_1024/v1770781431/photo-10_jwxe0m.png" alt="Ocotillo Interiors project photo 10">
     </div>
-    <div>
+    <div class="active">
       <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/f_auto,q_auto,c_scale,h_1024/v1770781429/photo-1_cz5juf.png" alt="Ocotillo Interiors project photo 1">
     </div>
-    <div class="active">
+    <div>
       <img src="https://res.cloudinary.com/captive-audience-marketing/image/upload/c_scale,f_auto,q_auto,h_1024/v1770781427/photo-2_dor3bi.jpg" alt="Ocotillo Interiors project photo 2">
     </div>
     <div>
