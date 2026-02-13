@@ -33,6 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 2000);
 
   logoSplash.classList.add('start');
+
+
+  const carousel = document.getElementById('carousel'),
+        carouselGrid = carousel.querySelector('.carousel-grid');
+
+  if (carousel) {
+    setTimeout(function(){
+      let gridWidth = carouselGrid.offsetWidth,
+          viewportWidth = window.innerWidth;
+      carouselGrid.style.left = `-${(gridWidth/2) - (viewportWidth/2) - 32}px`;
+
+      // Set up interval to rotate active class every 5 seconds
+      setInterval(() => {
+        const currentActive = carouselGrid.querySelector('.active');
+        const nextActive = currentActive.nextElementSibling || carouselGrid.firstElementChild;
+        
+        nextActive.classList.add('active');
+        currentActive.classList.remove('active');
+      }, 5000);
+    }, 5000);
+  }
+
 });
 
 // Photo pile functionality

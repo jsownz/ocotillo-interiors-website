@@ -607,10 +607,9 @@ body.home #logo-splash img {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 2rem;
-  width: 300vw;
   align-items: center;
-  position: relative;
-  left: -6vw; /* Center the grid: shift left by 1 viewport width */
+  position: absolute;
+  /* left: calc(-2441px - 128px); */
 }
 
 .carousel-grid > div {
