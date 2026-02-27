@@ -12,8 +12,9 @@
 
     <!-- Right Column - Image / Content -->
     <div class="right-column">
-      <div class="content-area">
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="content-area contact-c">
+        <form class="contact-form" id="contact-form">
+          <input type="hidden" id="c-p" value="aHR0cHM6Ly9uOG4uZnJvemVuc29saWRkZXNpZ25zLmNvbS93ZWJob29rL2Q2ZDQ0NzFkLWM2ZTctNDgyZC05NzcwLWIwMTc0ZmY3MWM4Yw==" readonly/>
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
@@ -38,9 +39,19 @@
             <label for="message">How can we help?</label>
             <textarea id="message" name="message" rows="6" placeholder="Add answer here"></textarea>
           </div>
-          <button type="submit" class="form-submit">Submit</button>
+
+          <input type="hidden" id="form_started" name="form_started">
+          <input type="hidden" id="js_token" name="js_token">
+          <input type="hidden" id="company" name="company">
+          <button type="submit" class="form-submit" id="x-btn-submit-contact">Submit</button>
         </form>
+
+        <div id="contact-thank-you" role="status" aria-live="polite">
+            <h2>Thank you!</h2>
+            <p>Your message has been sent.<br />We will be in touch shortly.</p>
+        </div>
       </div>
     </div>
   </div>
+  <script src="{{ '/assets/js/contact.js' | relative_url }}"></script>
 {% include footer.html %}
